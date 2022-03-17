@@ -1,0 +1,67 @@
+﻿@model  MvcEntityframe.Models.person
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+<div class="col-md-6">
+
+
+<form action="@Url.Action("Create","Home")" method="post">
+  <div class="form-group">
+    <label>First Name</label>
+    @Html.TextBoxFor(x => x.firstname)
+  </div>
+  <div class="form-group">
+    <label>Lastt Name</label>
+      @Html.TextBoxFor(x => x.lastname)
+  </div>
+   <div class="form-group">
+    <label>Email</label>
+      @Html.TextBoxFor(x => x.email)
+  </div>
+   <div class="form-group">
+    <label>Number</label>
+      @Html.TextBoxFor(x => x.number)
+  </div>
+   <div class="form-group">
+    <label>City</label>
+      @Html.TextBoxFor(x => x.city)
+  </div>
+  <input type="submit" value="Insert" class="btn btn-primary"/>
+</form>
+</div>
+</div>
+
+
+<div class="container">
+<table border="1">
+<tr>
+<th>id</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Email</th>
+<th>Number</th>
+<th>City</th>
+</tr>
+
+
+@foreach (var i in Model.user)
+{
+    <tr>
+     <td>@i.id</td>
+     <td>@i.firstname</td>
+     <td>@i.lastname</td>
+     <td>@i.email</td>
+    <td>@i.number</td>
+    <td>@i.city</td>
+    <td><button class="btn btn-success">@Html.ActionLink("Edit", "Edit", "Home", new { id = i.id }, null)</button></td>
+    <td><button class="btn btn-danger">@Html.ActionLink("Delete", "Delete", "Home", new { id = i.id }, null)</button></td>
+    </tr>
+}
+
+</table>
+</div>
+
